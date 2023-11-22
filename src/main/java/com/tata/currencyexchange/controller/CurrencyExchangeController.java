@@ -37,7 +37,7 @@ public class CurrencyExchangeController {
     public ResponseEntity<?> updateExchangeRate(@Valid @RequestBody ExchangeRateRequest exchangeRateRequest) {
         Boolean success = exchangeRateService.updateExchangeRate(exchangeRateRequest);
         if(success)
-            return ResponseEntity.ok(HttpStatus.CREATED);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Se actualizo el tipo de cambio exitosamente.");
         else
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("No se pudo actualizar el tipo de cambio.");
 
