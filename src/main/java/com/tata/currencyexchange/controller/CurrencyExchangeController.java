@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -32,7 +33,7 @@ public class CurrencyExchangeController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("No se tiene registrado el tipo de cambio para las monedas.");
     }
 
-    @PostMapping("/update-exchange-rate")
+    @PutMapping("/update-exchange-rate")
     public ResponseEntity<?> updateExchangeRate(@Valid @RequestBody ExchangeRateRequest exchangeRateRequest) {
         Boolean success = exchangeRateService.updateExchangeRate(exchangeRateRequest);
         if(success)
